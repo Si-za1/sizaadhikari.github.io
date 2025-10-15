@@ -112,9 +112,9 @@
     <section id="about">
         <h1>Hey,</h1>
         <p>
-          I’m <strong>Siza</strong> — a data engineer & AI/ML researcher lost between
+          I’m <strong>Siza</strong> — a data engineer & AI/ML researcher who is exploring between
           <em>AI safety and ethics</em>, <em>healthcare informatics </em> and <em>human-computer interaction</em>.
-          I like my code explainable, my coffee dark and hot, my drafts a little too much and my designs slightly mis-aligned.
+          <br> I like my code explainable, my coffee dark and hot, my drafts a little too much and my designs slightly mis-aligned.
         </p>
     </section>
 
@@ -154,20 +154,24 @@
     </section>
 
     <section id="pub">
-      <h2>Publications</h2>
-      <ul>
-        <li>
-          <strong>Status of Patient-Doctor Communication in a Nepali Hospital ↗ </strong> <a href="https://bjhs.com.np/bjhs/index.php/bjhs/article/view/387" target="_blank"> </a>
-          <br>Birat Journal of Health Sciences · Jun 2022
-          <br>Eak Duwadi,<b> Siza Adhikari </b>  Sujan Nepal
-        </li>
-        <li>
-          <strong>Adaptive Menu: A Review of Adaptive User Interfaces ↗ </strong> <a href="https://doi.org/10.17352/tcsit.000059" target="_blank"></a>
-          <br>Survey on adaptation styles, policies, benefits & limitations within Intelligent User Interfaces.
-          <br>Shrestha S, Poudel P, <b> Adhikari S,</b> Adhikari I (2022) ,  Nepal
-        </li>
-      </ul>
-    </section>
+        <h2>Publications</h2>
+        <ul>
+          <li>
+            <a href="https://bjhs.com.np/bjhs/index.php/bjhs/article/view/387" target="_blank">
+              <strong>Status of Patient-Doctor Communication in a Nepali Hospital ↗</strong>
+            </a>
+            <br>Birat Journal of Health Sciences · Jun 2022
+            <br>Eak Duwadi, <b>Siza Adhikari</b>, Sujan Nepal
+          </li>
+          <li>
+            <a href="https://doi.org/10.17352/tcsit.000059" target="_blank">
+              <strong>Adaptive Menu: A Review of Adaptive User Interfaces ↗</strong>
+            </a>
+            <br>Survey on adaptation styles, policies, benefits & limitations within Intelligent User Interfaces.
+            <br>Shrestha S, Poudel P, <b>Adhikari S</b>, Adhikari I (2022), Nepal
+          </li>
+        </ul>
+      </section>
 
     <section id="connect">
       <h2>Connect with me</h2>
@@ -192,7 +196,7 @@
         const hh = String(now.getHours()).padStart(2,'0');
         const mm = String(now.getMinutes()).padStart(2,'0');
         const dd = ['SUN','MON','TUE','WED','THU','FRI','SAT'][now.getDay()];
-        el.textContent = `LOCALTIME:${dd}${hh}:${mm}`;
+        el.textContent = `LOCALTIME: ${dd} ${hh}:${mm}`;
       }
       tick(); setInterval(tick, 30000);
     }
