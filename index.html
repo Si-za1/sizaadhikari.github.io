@@ -2,99 +2,213 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Siza Adhikari – Notes</title>
+  <title>Siza Adhikari</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Delius&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+  <!-- roughjs for hand-drawn borders -->
+  <script src="https://cdn.jsdelivr.net/npm/roughjs@4.5.1/bundled/rough.min.js"></script>
+
+  <style>
+    :root{
+      --ink: #2F4156;
+      --paper:#F5EFEB;
+      --sky:  #C8D9E6;
+      --teal: #567C8D;
+      --white:#FFFFFF;
+    }
+    body{
+      margin:0;
+      font-family:'Courier Prime', monospace;
+      background:var(--paper);
+      color:var(--ink);
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.07'/%3E%3C/svg%3E");
+    }
+    .paper{
+      max-width:740px;
+      margin:40px auto;
+      padding:50px 60px 40px;
+      background:var(--white);
+      box-shadow:0 0 12px rgba(47,65,86,.15);
+      position:relative;
+      transform:rotate(-0.4deg);
+      transition:transform .3s ease;
+    }
+    .paper:hover{transform:rotate(0deg) scale(1.005);}
+    header{
+      display:flex; justify-content:space-between; align-items:center;
+      margin-bottom:40px;
+    }
+    nav a{
+      margin-right:20px;
+      font-family:'Special Elite', cursive;
+      font-size:1.1em;
+      color:var(--teal);
+      text-decoration:none;
+      letter-spacing:1px;
+      border-bottom:2px solid transparent;
+      transition:border .25s;
+    }
+    nav a:hover{border-color:var(--ink);}
+    .local-time{
+      font-size:0.9em;
+      letter-spacing:1px;
+      color:var(--ink);
+      opacity:.7;
+    }
+    h1,h2{
+      font-family:'Special Elite', cursive;
+      font-weight:400;
+      margin:0 0 12px;
+    }
+    h1{font-size:2.8em; letter-spacing:-1px;}
+    h2{font-size:1.7em; margin-top:30px; color:var(--teal);}
+    p,li{line-height:1.7;}
+    a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--teal);}
+    a:hover{background:var(--sky);}
+    ul{ padding-left:22px; }
+    .works-list{
+      list-style:none;
+      padding-left:0;
+    }
+    .works-list li{
+      padding:10px 0;
+      border-bottom:1px dashed var(--sky);
+    }
+    .works-list li:before{
+      content:'▸ ';
+      color:var(--teal);
+      font-weight:bold;
+      margin-right:8px;
+    }
+    footer{
+      margin-top:50px;
+      text-align:center;
+      font-size:0.8em;
+      opacity:.6;
+    }
+    @media(max-width:600px){
+      .paper{padding:30px 25px;}
+      header{flex-direction:column; align-items:flex-start;}
+      .local-time{align-self:flex-end; margin-top:10px;}
+    }
+  </style>
 </head>
 
-<body>
-  <div class="paper">
-   
-   <center>  <h2>Siza Adhikari</h2> </center>
-   <center> <p class="tagline">Data Engineer &nbsp; & &nbsp; AI/ML Researcher</p></center>
-    <center><p class="quote">Pizza is a circle made of triangles, served in a square box</p></center>
-   
+<body onload="startClock(); drawBorder();">
+  <div class="paper" id="paper">
+    <header>
+      <nav>
+        <a href="#about">ABOUT</a>
+        <a href="#focus">FOCUS</a>
+        <a href="#works">WORKS</a>
+        <a href="#pub">PUBLICATIONS</a>
+        <a href="#connect">CONNECT</a>
+      </nav>
+      <span id="local-time" class="local-time"></span>
+    </header>
 
-    <section>
-      <h2>About</h2>
-      <p>
-        A prospective PhD applicant in Computer Science.
-        <br>
-        I’m passionate about exploring the intersection of AI, healthcare, and ethical technology. 
-        I’m particularly interested in AI Safety, Clinical NLP, and privacy-conscious, interpretable machine learning, health informatics aiming to develop systems that are both useful and responsible.
-
-      </p>
+    <section id="about">
+        <h1>Hey,</h1>
+        <p>
+          I’m <strong>Siza</strong> — a data engineer & AI/ML researcher lost between
+          <em>AI safety and ethics</em>, <em>healthcare informatics </em> and <em>human-computer interaction</em>.
+          I like my code explainable, my coffee dark and hot, my drafts a little too much and my designs slightly mis-aligned.
+        </p>
     </section>
 
-    <section>
+    <section id="focus">
       <h2>Current Focus</h2>
       <ul>
-        <li>Focused on advancing the design and development of safe, explainable, and human-centered conversational AI systems — with a special emphasis on trust, transparency, 
-            and real-world reliability in healthcare and clinical settings.</li>
-        <li>Exploring data protection and privacy-preserving techniques, particularly for Protected Health Information (PHI) and 
-            other sensitive datasets within the LLM ecosystem. </li>
-      </ul>
-    </section>
-
-    <section>
-      <h2> Recent Work</h2>
-      <ul>
         <li>
-            MeetMind – AI Productivity Assistant (Hackathon Project, 2025)
-            <a href="https://github.com/LeapfrogRnD/MeetMind" target="_blank"></a>
-            <p> 
-                An application that analyzes the post-meeting workflows by processing 
-                Google Meet transcripts using AI to generate JIRA tickets and a Confluence page.
-            </p>
+          Advancing safe, explainable, human-centred conversational AI — with extra
+          attention to <strong>trust, transparency, and real-world reliability</strong>
+          in healthcare & clinical settings.
         </li>
         <li>
-          GenAI Competency Program (AWS AWS Partner Network).
+          Exploring data-protection & privacy-preserving techniques for
+          <strong>Protected Health Information (PHI)</strong> inside the Large Language Model ecosystem.
         </li>
       </ul>
     </section>
 
-    <section>
+    <section id="notes">
+        <h2>NOTES & SCRIBBLES</h2>
+        <ul>
+          <li><a href="https://starter-startler.medium.com/" target="_blank">Medium ↗</a></li>
+          <li><a href="https://si-za1.github.io/notes-in-public/my_notes/">My learning notes ↗</a></li>
+          <li>Newsletter: <em>AI and You</em> (300+ readers)</li>
+          <li>Newsletter: <em>Your Favorite work Buddy </em> (300+ readers)</li>
+        </ul>
+      </section>
+    
+    <section id="works">
+        <h2>RECENT WORKS</h2>
+        <ul class="works-list">
+          <li>Addy Healthcare – AI medical-record pipeline (Claude, AWS Bedrock & GPT)</li>
+          <a href="https://github.com/LeapfrogRnD/MeetMind" target="_blank"><li>MeetMind ↗– AI Productivity Assistant (Hackathon Project, 2025)
+              An application that analyzes the post-meeting workflows by processing Google Meet transcripts using AI to generate JIRA tickets and a Confluence page.</li>
+          <li>LEAPFROG :: AWS Partner Network – GenAI Competency Program.</li>
+        </ul>
+    </section>
+
+    <section id="pub">
       <h2>Publications</h2>
       <ul>
         <li>
-          <a href="https://www.nepjol.info/index.php/bjhs/article/view/45786" target="_blank">
-            Status of Patient-Doctor Communication in a Nepali Hospital
-          </a>      
+          <strong>Status of Patient-Doctor Communication in a Nepali Hospital</strong>
+          <br>Birat Journal of Health Sciences · Jun 2022
+          <br>Duwadi, Adhikari, Nepal
+          <br><a href="https://bjhs.com.np/bjhs/index.php/bjhs/article/view/387" target="_blank">https://bjhs.com.np/bjhs/index.php/bjhs/article/view/387</a>
         </li>
-          Birat Journal of Health Sciences · Jun 24, 2022
-          Eak Prasad Duwadi, Siza Adhikari, Sujan Nepal 
         <li>
-          <a href="https://www.semanticscholar.org/paper/Adaptive-menu%3A-A-review-of-adaptive-user-interface-Sushil-Prashant/921da6d4addd5fedb027de05206bf892f3bdaed5" target="_blank">
-            Adaptive Menu: A Review of Adaptive User Interfaces
-          </a>
+          <strong>Adaptive Menu: A Review of Adaptive User Interfaces</strong>
+          <br>Survey on adaptation styles, policies, benefits & limitations within Intelligent User Interfaces.
+          <br><a href="https://doi.org/10.17352/tcsit.000059" target="_blank">https://doi.org/10.17352/tcsit.000059</a>
         </li>
       </ul>
     </section>
 
-    <section>
-      <h2>Newsletters & Writing</h2>
+    <section id="connect">
+      <h2>Connect with me</h2>
       <ul>
-        <li><a href="https://starter-startler.medium.com/" target="_blank">Medium</a> – essays & reviews</li>
-        <li><a href="https://si-za1.github.io/notes-in-public/my_notes/">Personal Learning Notes</a></li>
-        <li>Newsletter: <em>AI and You</em> (350+ subs)</li>
-        <li>Newsletter: <em>Your Favourite Work Buddy</em> (300+ subs)</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Quick Links</h2>
-      <ul>
+        <li><a href="https://x.com/Starterstartler" target="_blank">x.com/Starterstartler</a></li>
         <li><a href="https://www.linkedin.com/in/siza-adhikari-2a9574199/" target="_blank">LinkedIn</a></li>
-        <li><a href="https://github.com/Si-za1/" target="_blank">GitHub</a></li>
-        <li>Email: siza.adhikari08@gmail.com</li>
+        <li><a href="mailto:siza.adhikari08@gmail.com">siza.adhikari08@gmail.com</a></li>
       </ul>
     </section>
 
-    <section>
-      <h2>Things I Like</h2>
-      <p>Reading Books, Cafe Hopping and Coffee </p>
-    </section>
+    <footer>
+      <small>Made with 🖊️ & 🍵 in Nepal — last update <span id="last-modified"></span></small>
+    </footer>
   </div>
+
+  <script>
+    /* live clock */
+    function startClock(){
+      const el = document.getElementById('local-time');
+      function tick(){
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2,'0');
+        const mm = String(now.getMinutes()).padStart(2,'0');
+        const dd = ['SUN','MON','TUE','WED','THU','FRI','SAT'][now.getDay()];
+        el.textContent = `LOCALTIME:${dd}${hh}:${mm}`;
+      }
+      tick(); setInterval(tick, 30000);
+    }
+
+    /* hand-drawn border */
+    function drawBorder(){
+      const p = document.getElementById('paper');
+      rough.svg(p)
+           .rectangle(8, 8, p.offsetWidth-16, p.offsetHeight-16,
+                      {roughness:2.8, stroke:'var(--teal)', strokeWidth:1.5});
+    }
+
+    /* last modified footer */
+    document.getElementById('last-modified').textContent
+      = new Date(document.lastModified).toLocaleDateString();
+  </script>
 </body>
 </html>

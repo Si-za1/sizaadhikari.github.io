@@ -52,7 +52,7 @@
   .tagline{
     font-family:'Caveat', cursive;
     font-size:1.35em;
-    color:var(--teal);
+    color:var(--white);
     margin-bottom:25px;
   }
   h2{
