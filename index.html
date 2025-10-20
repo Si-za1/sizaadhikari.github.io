@@ -111,6 +111,35 @@
     }
     nav a:hover{ background: rgba(86,124,141,0.06); color:var(--ink); }
 
+  #publications ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+  }
+
+  #publications li {
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--sky);
+    line-height: 1.7;
+  }
+
+  #publications li strong {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: var(--teal);
+  }
+
+  .pub-meta {
+    font-size: 0.9em;
+    opacity: 0.8;
+  }
+
+  .pub-authors {
+    font-size: 0.9em;
+    color: var(--ink);
+    opacity: 0.9;
+  }
+
     /* local time tucked below header on right */
     .top-right{
       display:flex;
@@ -207,6 +236,7 @@
     <header>
       <nav aria-label="Main navigation">
         <a href="#research">RESEARCH</a>
+        <a href="#publications">PUBLICATIONS</a>
         <a href="#works">WORKS</a>
         <a href="#projects">PROJECTS</a>
         <a href="#blog">BLOG</a>
@@ -255,6 +285,31 @@
 
       <p class="meta">Keywords : Healthcare AI, Healthcare Informatics, Clinical NLP, Large Language Models in Medicine, Human-centered AI, Human-in-the-loop, HIPAA-compliant AI, Privacy-preserving ML, EHR system.</p>
     </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <h2>Publications</h2>
+      <ul>
+        <li>
+          <a href="https://bjhs.com.np/bjhs/index.php/bjhs/article/view/387" target="_blank">
+            <strong>Status of Patient-Doctor Communication in a Nepali Hospital ↗</strong>
+          </a>
+          <br>
+          <span class="pub-meta">Birat Journal of Health Sciences · Jun 2022</span><br>
+          <span class="pub-authors">Eak Duwadi, <b>Siza Adhikari</b>, Sujan Nepal</span>
+        </li>
+    
+        <li>
+          <a href="https://doi.org/10.17352/tcsit.000059" target="_blank">
+            <strong>Adaptive Menu: A Review of Adaptive User Interfaces ↗</strong>
+          </a>
+          <br>
+          <span class="pub-meta">International Journal of Computer Science and Information Technology, 2022</span><br>
+          <span class="pub-authors">Sushil Shrestha, Prashant Poudel, <b>Siza Adhikari</b>, Isha Adhikari</span>
+        </li>
+      </ul>
+    </section>
+    
 
     <!-- RECENT WORKS -->
     <section id="works">
