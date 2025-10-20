@@ -3,16 +3,11 @@
 <head>
   <meta charset="utf-8">
   <title>Siza Adhikari</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
   <!-- fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&family=Manrope:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <!-- roughjs for hand-drawn borders -->
   <script src="https://cdn.jsdelivr.net/npm/roughjs@4.5.1/bundled/rough.min.js"></script>
@@ -24,65 +19,157 @@
       --sky:  #C8D9E6;
       --teal: #567C8D;
       --white:#FFFFFF;
+      --muted: #7b8b96;
     }
+
+    /* page background: subtle starry sky + paper feel */
+    html,body{height:100%;}
     body{
       margin:0;
-      /* font-family:'Courier Prime', monospace; */
       font-family: 'Manrope', sans-serif;
-      background:var(--paper);
       color:var(--ink);
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.07'/%3E%3C/svg%3E");
+      background: radial-gradient(ellipse at top, rgba(204,224,242,0.85) 0%, rgba(245,239,235,1) 60%);
+      background-attachment: fixed;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
+
+    /* soft stars layer */
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      background-image:
+        radial-gradient(circle at 8% 12%, rgba(255,255,255,0.9) 0px, rgba(255,255,255,0.0) 2px),
+        radial-gradient(circle at 22% 28%, rgba(255,255,255,0.85) 0px, rgba(255,255,255,0.0) 1.8px),
+        radial-gradient(circle at 40% 10%, rgba(255,255,255,0.85) 0px, rgba(255,255,255,0.0) 1.5px),
+        radial-gradient(circle at 70% 24%, rgba(255,255,255,0.75) 0px, rgba(255,255,255,0.0) 1.6px),
+        radial-gradient(circle at 82% 8%, rgba(255,255,255,0.8) 0px, rgba(255,255,255,0.0) 2px),
+        radial-gradient(circle at 55% 72%, rgba(255,255,255,0.7) 0px, rgba(255,255,255,0.0) 1.6px);
+      opacity:0.55;
+      mix-blend-mode:screen;
+      filter: blur(.3px);
+    }
+
+    /* faint moon */
+    body::before{
+      content:"";
+      position:fixed;
+      right:6%;
+      top:5%;
+      width:84px;
+      height:84px;
+      background: radial-gradient(circle at 30% 25%, #fff 0%, #f7f9ff 18%, rgba(255,255,255,0.6) 40%, transparent 60%);
+      border-radius:50%;
+      box-shadow: 0 0 22px rgba(255,255,255,0.15), 0 0 60px rgba(216,226,236,0.45);
+      opacity:0.9;
+      pointer-events:none;
+    }
+
+    /* paper card */
     .paper{
-      max-width:740px;
-      margin:40px auto;
-      padding:50px 60px 40px;
-      background:var(--white);
-      box-shadow:0 0 12px rgba(47,65,86,.15);
       position:relative;
-      transform:rotate(-0.4deg);
-      transition:transform .3s ease;
+      z-index:1;
+      max-width:820px;
+      margin:48px auto;
+      padding:46px 56px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.98));
+      box-shadow:0 10px 22px rgba(47,65,86,.12);
+      transform:rotate(-0.25deg);
+      transition:transform .25s ease;
+      border-radius:12px;
+      overflow:visible;
     }
-    .paper:hover{transform:rotate(0deg) scale(1.005);}
+    .paper:hover{transform:rotate(0deg) scale(1.004);}
+
     header{
-      display:flex; justify-content:space-between; align-items:center;
-      margin-bottom:40px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:18px;
+      margin-bottom:26px;
+    }
+
+    /* nav */
+    nav{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      flex-wrap:wrap;
     }
     nav a{
-      margin-right:20px;
-      font-family:'poppins', sans-serif; 
-      font-size:1.1em;
+      font-family:'Poppins',sans-serif;
+      font-size:0.95rem;
       color:var(--teal);
       text-decoration:none;
       letter-spacing:1px;
-      border-bottom:2px solid transparent;
-      transition:border .25s;
+      padding:6px 8px;
+      border-radius:8px;
+      transition:background .18s, color .18s;
     }
-    nav a:hover{border-color:var(--ink);}
+    nav a:hover{ background: rgba(86,124,141,0.06); color:var(--ink); }
+
+    /* local time tucked below header on right */
+    .top-right{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:10px;
+      min-width:160px;
+    }
     .local-time{
       font-size:0.9em;
       letter-spacing:1px;
-      color:var(--ink);
-      opacity:.7;
+      color:var(--muted);
     }
+
     h1,h2{
-      font-family:'poppins', sans-serif; 
-      font-weight:400;
+      font-family:'Poppins', sans-serif;
+      font-weight:600;
       margin:0 0 12px;
     }
-    h1{font-size:2.8em; letter-spacing:-1px;}
-    h2{font-size:1.7em; margin-top:30px; color:var(--teal);}
-    p,li{line-height:1.7;}
-    a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--teal);}
-    a:hover{background:var(--sky);}
-    ul{ padding-left:22px; }
-    .works-list{
-      list-style:none;
-      padding-left:0;
+
+    /* Intro heading stylistic */
+    .intro-heading{
+      font-family: 'Special Elite', cursive;
+      font-size:2.8rem;
+      margin:0 0 8px;
+      color:var(--ink);
+      letter-spacing:0.6px;
     }
+
+    .bio-line{
+      font-size:1.05rem;
+      color:var(--ink);
+      line-height:1.65;
+      margin:6px 0;
+    }
+
+    .medium-quote{
+      margin-top:20px;
+      padding:14px 16px;
+      border-left:4px solid var(--teal);
+      background: linear-gradient(90deg, rgba(200,217,230,0.04), transparent);
+      font-style:italic;
+      color:var(--muted);
+      border-radius:6px;
+      max-width:86%;
+    }
+
+    h2{ font-size:1.4rem; margin-top:26px; color:var(--teal); }
+
+    p,li{ line-height:1.7; color:var(--ink); }
+    a{ color:var(--ink); text-decoration:none; border-bottom:1px dotted rgba(86,124,141,.22); }
+    a:hover{ background:var(--sky); }
+
+    ul{ padding-left:20px; }
+
+    .works-list{ list-style:none; padding-left:0; margin:8px 0; }
     .works-list li{
       padding:10px 0;
-      border-bottom:1px dashed var(--sky);
+      border-bottom:1px dashed rgba(200,217,230,0.5);
     }
     .works-list li:before{
       content:'▸ ';
@@ -90,16 +177,27 @@
       font-weight:bold;
       margin-right:8px;
     }
+
+    .projects-list{ list-style:none; padding-left:0; }
+    .projects-list li{ padding:8px 0; }
+
+    .meta{ font-size:0.92rem; color:var(--muted); }
+
     footer{
-      margin-top:50px;
+      margin-top:36px;
       text-align:center;
-      font-size:0.8em;
-      opacity:.6;
+      font-size:0.88em;
+      color:var(--muted);
+      opacity:0.95;
     }
-    @media(max-width:600px){
-      .paper{padding:30px 25px;}
-      header{flex-direction:column; align-items:flex-start;}
-      .local-time{align-self:flex-end; margin-top:10px;}
+
+    /* responsive */
+    @media(max-width:840px){
+      .paper{ margin:28px 18px; padding:30px; }
+      .intro-heading{ font-size:2.2rem; }
+      header{ flex-direction:column; align-items:flex-start; gap:12px; }
+      .top-right{ align-self:flex-end; flex-direction:row; gap:12px; align-items:center; }
+      .medium-quote{ max-width:100%; }
     }
   </style>
 </head>
@@ -107,91 +205,117 @@
 <body onload="startClock(); drawBorder();">
   <div class="paper" id="paper">
     <header>
-      <nav>
-        <a href="#about">ABOUT</a>
-        <a href="#focus">FOCUS</a>
+      <nav aria-label="Main navigation">
+        <a href="#research">RESEARCH</a>
         <a href="#works">WORKS</a>
-        <a href="#pub">PUBLICATIONS</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#blog">BLOG</a>
+        <a href="#about">ABOUT ME</a>
         <a href="#connect">CONNECT</a>
       </nav>
-      <span id="local-time" class="local-time"></span>
+
+      <div class="top-right">
+        <div id="local-time" class="local-time" aria-live="polite"></div>
+        <div class="meta">Made with ❤️ & 🍵 in Nepal</div>
+      </div>
     </header>
 
-    <section id="about">
-        <h1>Hey,</h1>
-        <p>
-          I’m <strong>Siza</strong> — a data engineer & AI/ML researcher who is exploring between
-          <b> AI safety and ethics, healthcare informatics  and human-computer interaction.</b>
-          <br> I like my code explainable, my coffee dark and hot, my drafts a little too much and my designs slightly mis-aligned.
-        </p>
+    <!-- ABOUT / HERO -->
+    <section id="about" aria-labelledby="about-heading">
+      <h1 class="intro-heading">Hey, I’m Siza</h1>
+
+      <p class="bio-line">
+        A curious, experimenting, self-aware maker who enjoys small rituals and big ideas.
+      </p>
+      <p class="bio-line">
+        Currently at <strong>Leapfrog Technology</strong>, working on data pipelines, model integrations, and applied AI systems that ship to production.
+      </p>
+      <p class="bio-line">
+        I want to deepen research into AI Safety, Healthcare Informatics, and Human–Centered AI — building work that marries engineering with ethical, patient-centered thinking.
+      </p>
+
+      <blockquote class="medium-quote">
+        “I like my code explainable, my coffee dark and hot, and my designs intentionally imperfect.”
+      </blockquote>
     </section>
 
-    <section id="focus">
-      <h2>Current Focus</h2>
-      <ul>
+    <!-- RESEARCH INTERESTS -->
+    <section id="research" aria-labelledby="research-heading">
+      <h2>Research Interests</h2>
+
+      <p class="meta">With my work centred around healthcare projects, and prior research in healthcare communication and adaptive systems, I am curious to explore this intersection further. My research interests include — but are not limited to — the following areas:</p>
+
+      <p><strong>Health Informatics / AI in Healthcare:</strong> I focus on practical applications of machine learning in clinical environments — from Clinical NLP and large language models in medicine to AI-driven clinical decision support and patient-facing tools. My work aims to make Healthcare AI that is useful, evidence-driven, and safe for clinicians and patients alike.</p>
+
+      <p><strong>Human-Centered AI / Human-in-the-loop:</strong> Designing AI systems with humans at the center — creating human-in-the-loop workflows, running usability studies, and ensuring AI-assisted clinical decision support prototypes actually help end-users. I combine HCI principles with applied ML to improve trust and adoption.</p>
+
+      <p><strong>AI Regulation, HIPAA & Privacy:</strong> Researching privacy-preserving machine learning, HIPAA-compliant model deployment patterns, and governance frameworks for healthcare AI. I’m interested in approaches that balance utility and compliance so systems can be both effective and legally/ethically sound.</p>
+
+      <p><strong>EHR & Clinical Data:</strong> Working with Electronic Health Records and messy clinical datasets to build predictive models and workflow tools that support hospital operations and patient care. This includes feature engineering for EMRs, predictive modeling, and designing analytics that respect clinical realities and data governance.</p>
+
+      <p class="meta">Keywords (examples): Healthcare AI, Clinical NLP, Large Language Models in Medicine, Human-centered AI, Human-in-the-loop, HIPAA-compliant AI, Privacy-preserving ML, EHR analytics.</p>
+    </section>
+
+    <!-- RECENT WORKS -->
+    <section id="works">
+      <h2>Recent Works</h2>
+      <ul class="works-list">
         <li>
-          Advancing safe, explainable, human-centred conversational AI — with extra
-          attention to <strong>trust, transparency, and real-world reliability</strong>
-          in healthcare & clinical settings.
+          <strong>Addy Healthcare — AI medical-record pipeline</strong>
+          <div class="meta">I helped design and integrate an end-to-end pipeline to process clinical notes, extract structured events, and summarize encounters for clinicians using a mix of LLMs and rule-based components. Focus areas: data privacy, reliability, and pragmatic deployment patterns for clinical settings. <a href="#blog">Read more →</a></div>
         </li>
+
         <li>
-          Exploring data-protection & privacy-preserving techniques for
-          <strong>Protected Health Information (PHI)</strong> inside the Large Language Model ecosystem.
+          <strong>AWS GenAI Competency Program</strong>
+          <div class="meta">Contributed to building capability and best-practice guidance around generative AI solutions as part of a partner competency initiative — including evaluation criteria, design patterns, and pilot architectures for enterprise clients.</div>
         </li>
       </ul>
     </section>
 
-    <section id="notes">
-        <h2>NOTES & SCRIBBLES</h2>
-        <ul>
-          <li><a href="https://starter-startler.medium.com/" target="_blank">Medium ↗</a></li>
-          <li><a href="https://si-za1.github.io/notes-in-public/my_notes/">My learning notes ↗</a></li>
-          <li>Newsletter: <em>AI and You</em> (300+ readers)</li>
-          <li>Newsletter: <em>Your Favorite work Buddy </em> (300+ readers)</li>
-        </ul>
-      </section>
-    
-    <section id="works">
-        <h2>RECENT WORKS</h2>
-        <ul class="works-list">
-          <li>Addy Healthcare – AI medical-record pipeline (Claude, AWS Bedrock & GPT)</li>
-          <a href="https://github.com/LeapfrogRnD/MeetMind" target="_blank"><li>MeetMind ↗ – AI Productivity Assistant (Hackathon Project, 2025)
-              An application that analyzes the post-meeting workflows by processing Google Meet transcripts using AI to generate JIRA tickets and a Confluence page.</li>
-          <li>LEAPFROG :: AWS Partner Network – GenAI Competency Program.</li>
-        </ul>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul class="projects-list">
+        <li>
+          <a href="https://github.com/LeapfrogRnD/MeetMind" target="_blank" rel="noopener">
+            <strong>MeetMind ↗</strong>
+          </a>
+          — An AI productivity assistant that analyzes meeting transcripts (Google Meet) to generate JIRA tickets and Confluence pages. (Hackathon project, 2025)
+        </li>
+      </ul>
     </section>
 
-    <section id="pub">
-        <h2>Publications</h2>
-        <ul>
-          <li>
-            <a href="https://bjhs.com.np/bjhs/index.php/bjhs/article/view/387" target="_blank">
-              <strong>Status of Patient-Doctor Communication in a Nepali Hospital ↗</strong>
-            </a>
-            <br>Birat Journal of Health Sciences · Jun 2022
-            <br>Eak Duwadi, <b>Siza Adhikari</b>, Sujan Nepal
-          </li>
-          <li>
-            <a href="https://doi.org/10.17352/tcsit.000059" target="_blank">
-              <strong>Adaptive Menu: A Review of Adaptive User Interfaces ↗</strong>
-            </a>
-            <br>Survey on adaptation styles, policies, benefits & limitations within Intelligent User Interfaces.
-            <br>Shrestha S, Poudel P, <b>Adhikari S</b>, Adhikari I (2022), Nepal
-          </li>
-        </ul>
-      </section>
-
-    <section id="connect">
-      <h2>Connect with me</h2>
+    <!-- BLOG -->
+    <section id="blog">
+      <h2>Blog & Notes</h2>
+      <p>I maintain two writing spaces — one technical and one creative.</p>
       <ul>
-        <li><a href="https://x.com/Starterstartler" target="_blank"> x.com/Starterstartler </a></li>
-        <li><a href="https://www.linkedin.com/in/siza-adhikari-2a9574199/" target="_blank"> LinkedIn </a></li>
+        <li><strong>Technical Notes:</strong> <a href="https://si-za1.github.io/notes-in-public/my_notes/LLM/" target="_blank" rel="noopener">Notes in Public ↗</a> — detailed, practical writeups on LLMs, experiments, and reproducible notes.</li>
+        <li><strong>Creative Writing:</strong> <a href="https://starter-startler.medium.com/" target="_blank" rel="noopener">Starter_Startler on Medium ↗</a> — essays, reflections, and shorter creative pieces.</li>
+      </ul>
+    </section>
+
+    <!-- ABOUT ME (PERSONAL) -->
+    <section id="personal">
+      <h2>Things About Me</h2>
+      <p><strong>Free time:</strong> I read books and watch anime. Recent read: <em>White Nights</em> by Fyodor Dostoevsky. Recent anime: <em>Takopi’s Original Sin</em>, <em>Kotaro Lives Alone</em>, <em>The Fragrant Flower Blooms with Dignity</em>, and <em>Sakamoto Days</em>.</p>
+      <p><strong>Things I love:</strong> coffee (dark and hot), quiet coding mornings, small rituals that make long workdays humane.</p>
+      <p><strong>Three words:</strong> curious · principled · playful</p>
+    </section>
+
+    <!-- CONNECT -->
+    <section id="connect">
+      <h2>Connect</h2>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/siza-adhikari-2a9574199/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://x.com/Starterstartler" target="_blank" rel="noopener">X / Twitter ↗</a></li>
+        <li><a href="https://starter-startler.medium.com/" target="_blank" rel="noopener">Medium / Starter_Startler ↗</a></li>
         <li><a href="mailto:siza.adhikari08@gmail.com">siza.adhikari08@gmail.com</a></li>
       </ul>
     </section>
 
     <footer>
-      <small>Made with ❤️ & 🍵 in Nepal — last update <span id="last-modified"></span></small>
+      <small>© Siza Adhikari — crafted with curiosity. Local time shown above.</small>
     </footer>
   </div>
 
@@ -209,17 +333,46 @@
       tick(); setInterval(tick, 30000);
     }
 
-    /* hand-drawn border */
+    /* hand-drawn border using roughjs */
     function drawBorder(){
-      const p = document.getElementById('paper');
-      rough.svg(p)
-           .rectangle(8, 8, p.offsetWidth-16, p.offsetHeight-16,
-                      {roughness:2.8, stroke:'var(--teal)', strokeWidth:1.5});
+      try{
+        const p = document.getElementById('paper');
+        // create an SVG overlay and draw rectangle matching the paper
+        const svgNS = "http://www.w3.org/2000/svg";
+        // remove old canvas if exists
+        const old = document.getElementById('rough-canvas');
+        if(old) old.remove();
+
+        const svg = document.createElementNS(svgNS, 'svg');
+        svg.setAttribute('id','rough-canvas');
+        svg.setAttribute('width', p.offsetWidth);
+        svg.setAttribute('height', p.offsetHeight);
+        svg.style.position = 'absolute';
+        svg.style.left = p.offsetLeft + 'px';
+        svg.style.top = p.offsetTop + 'px';
+        svg.style.zIndex = 2;
+        svg.style.pointerEvents = 'none';
+
+        document.body.appendChild(svg);
+        const rc = rough.svg(svg);
+        const pad = 10;
+        rc.rectangle(p.offsetLeft + pad, p.offsetTop + pad, p.offsetWidth - pad*2, p.offsetHeight - pad*2, {
+          roughness:2.6, stroke:'rgba(86,124,141,0.9)', strokeWidth:1.6, fill: 'transparent'
+        });
+
+      }catch(e){
+        // fail silently
+        console.warn('rough border failed', e);
+      }
     }
 
-    /* last modified footer */
-    document.getElementById('last-modified').textContent
-      = new Date(document.lastModified).toLocaleDateString();
+    // redraw border on resize
+    window.addEventListener('resize', () => {
+      // small timeout to let layout settle
+      setTimeout(drawBorder, 120);
+    });
+
+    // remove any "lastModified" usage (we intentionally removed footer date)
   </script>
 </body>
-</html> 
+</html>
