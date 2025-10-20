@@ -9,8 +9,6 @@
 
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -27,7 +25,6 @@
     }
     body{
       margin:0;
-      /* font-family:'Courier Prime', monospace; */
       font-family: 'Manrope', sans-serif;
       background:var(--paper);
       color:var(--ink);
@@ -109,89 +106,90 @@
     <header>
       <nav>
         <a href="#about">ABOUT</a>
-        <a href="#focus">FOCUS</a>
+        <a href="#research">RESEARCH</a>
         <a href="#works">WORKS</a>
         <a href="#pub">PUBLICATIONS</a>
+        <a href="#blog">BLOG</a>
         <a href="#connect">CONNECT</a>
       </nav>
       <span id="local-time" class="local-time"></span>
     </header>
 
     <section id="about">
-        <h1>Hey,</h1>
-        <p>
-          I’m <strong>Siza</strong> — a data engineer & AI/ML researcher who is exploring between
-          <b> AI safety and ethics, healthcare informatics  and human-computer interaction.</b>
-          <br> I like my code explainable, my coffee dark and hot, my drafts a little too much and my designs slightly mis-aligned.
-        </p>
+      <h1>Hey,</h1>  I’m <strong>Siza</strong> 
+      <p>
+        — a data engineer & AI/ML researcher exploring the intersections of 
+        <b>AI Safety and Ethics</b>, <b>Healthcare Informatics</b>, and <b>Human–Computer Interaction</b>.
+        <br><br>
+        I believe that the future of intelligent systems lies not only in their capabilities, but in their 
+        <em>alignment with human values</em> — systems that are safe, transparent, and truly assistive.  
+        I like my code explainable, my coffee dark and hot, and my designs intentionally imperfect.
+      </p>
     </section>
 
-    <section id="focus">
-      <h2>Current Focus</h2>
+    <section id="research">
+      <h2>Research Interests</h2>
+      <ul>
+        <li><b>AI Safety & Trustworthiness:</b> Designing systems that remain safe and reliable in high-stakes domains like healthcare, ensuring factual correctness aligns with ethical integrity.</li>
+        <li><b>Healthcare Informatics:</b> Leveraging machine learning for clinical decision support while prioritizing privacy, fairness, and patient-centric transparency.</li>
+        <li><b>Human–Computer Interaction (HCI):</b> Studying how people interact with intelligent systems, and creating adaptive interfaces that respond meaningfully to human context and emotion.</li>
+        <li><b>Responsible AI:</b> Exploring frameworks that embed explainability, accountability, and social responsibility within large-scale AI systems.</li>
+      </ul>
+    </section>
+
+    <section id="works">
+      <h2>Recent Works</h2>
+      <ul class="works-list">
+        <li>Addy Healthcare – AI medical-record pipeline (Claude, AWS Bedrock & GPT)</li>
+        <li><a href="https://github.com/LeapfrogRnD/MeetMind" target="_blank">MeetMind ↗</a> – AI Productivity Assistant (Hackathon Project, 2025)
+          An application that analyzes post-meeting workflows using Google Meet transcripts to generate JIRA tickets and Confluence pages.</li>
+        <li>LEAPFROG :: AWS Partner Network – GenAI Competency Program.</li>
+      </ul>
+    </section>
+
+    <section id="pub">
+      <h2>Publications</h2>
       <ul>
         <li>
-          Advancing safe, explainable, human-centred conversational AI — with extra
-          attention to <strong>trust, transparency, and real-world reliability</strong>
-          in healthcare & clinical settings.
+          <a href="https://bjhs.com.np/bjhs/index.php/bjhs/article/view/387" target="_blank">
+            <strong>Status of Patient-Doctor Communication in a Nepali Hospital ↗</strong>
+          </a><br>
+          Birat Journal of Health Sciences · Jun 2022<br>
+          Eak Duwadi, <b>Siza Adhikari</b>, Sujan Nepal
         </li>
         <li>
-          Exploring data-protection & privacy-preserving techniques for
-          <strong>Protected Health Information (PHI)</strong> inside the Large Language Model ecosystem.
+          <a href="https://doi.org/10.17352/tcsit.000059" target="_blank">
+            <strong>Adaptive Menu: A Review of Adaptive User Interfaces ↗</strong>
+          </a><br>
+          Survey on adaptation styles, policies, benefits & limitations within Intelligent User Interfaces.<br>
+          Shrestha S, Poudel P, <b>Adhikari S</b>, Adhikari I (2022), Nepal
         </li>
       </ul>
     </section>
 
-    <section id="notes">
-        <h2>NOTES & SCRIBBLES</h2>
-        <ul>
-          <li><a href="https://starter-startler.medium.com/" target="_blank">Medium ↗</a></li>
-          <li><a href="https://si-za1.github.io/notes-in-public/my_notes/">My learning notes ↗</a></li>
-          <li>Newsletter: <em>AI and You</em> (300+ readers)</li>
-          <li>Newsletter: <em>Your Favorite work Buddy </em> (300+ readers)</li>
-        </ul>
-      </section>
-    
-    <section id="works">
-        <h2>RECENT WORKS</h2>
-        <ul class="works-list">
-          <li>Addy Healthcare – AI medical-record pipeline (Claude, AWS Bedrock & GPT)</li>
-          <a href="https://github.com/LeapfrogRnD/MeetMind" target="_blank"><li>MeetMind ↗ – AI Productivity Assistant (Hackathon Project, 2025)
-              An application that analyzes the post-meeting workflows by processing Google Meet transcripts using AI to generate JIRA tickets and a Confluence page.</li>
-          <li>LEAPFROG :: AWS Partner Network – GenAI Competency Program.</li>
-        </ul>
+    <section id="blog">
+      <h2>Blog & Notes</h2>
+      <p>
+        I write about AI, data ethics, and technical explorations — simplified for readers who like to think deeply.
+        <br>
+        → Visit my technical notes: <a href="https://si-za1.github.io/notes-in-public/my_notes/LLM/" target="_blank"><b>Notes in Public ↗</b></a>
+      </p>
+      <p>
+        Read more about my ideas, reflections, and learnings in <a href="https://si-za1.github.io/notes-in-public/my_notes/LLM/" target="_blank">the blog section</a>.
+      </p>
     </section>
-
-    <section id="pub">
-        <h2>Publications</h2>
-        <ul>
-          <li>
-            <a href="https://bjhs.com.np/bjhs/index.php/bjhs/article/view/387" target="_blank">
-              <strong>Status of Patient-Doctor Communication in a Nepali Hospital ↗</strong>
-            </a>
-            <br>Birat Journal of Health Sciences · Jun 2022
-            <br>Eak Duwadi, <b>Siza Adhikari</b>, Sujan Nepal
-          </li>
-          <li>
-            <a href="https://doi.org/10.17352/tcsit.000059" target="_blank">
-              <strong>Adaptive Menu: A Review of Adaptive User Interfaces ↗</strong>
-            </a>
-            <br>Survey on adaptation styles, policies, benefits & limitations within Intelligent User Interfaces.
-            <br>Shrestha S, Poudel P, <b>Adhikari S</b>, Adhikari I (2022), Nepal
-          </li>
-        </ul>
-      </section>
 
     <section id="connect">
       <h2>Connect with me</h2>
       <ul>
-        <li><a href="https://x.com/Starterstartler" target="_blank"> x.com/Starterstartler </a></li>
-        <li><a href="https://www.linkedin.com/in/siza-adhikari-2a9574199/" target="_blank"> LinkedIn </a></li>
+        <li><a href="https://x.com/Starterstartler" target="_blank">x.com/Starterstartler</a></li>
+        <li><a href="https://www.linkedin.com/in/siza-adhikari-2a9574199/" target="_blank">LinkedIn</a></li>
         <li><a href="mailto:siza.adhikari08@gmail.com">siza.adhikari08@gmail.com</a></li>
       </ul>
     </section>
 
     <footer>
-      <small>Made with ❤️ & 🍵 in Nepal — last update <span id="last-modified"></span></small>
+      <small>Made with ❤️ & 🍵 in Nepal</small>
     </footer>
   </div>
 
@@ -216,10 +214,6 @@
            .rectangle(8, 8, p.offsetWidth-16, p.offsetHeight-16,
                       {roughness:2.8, stroke:'var(--teal)', strokeWidth:1.5});
     }
-
-    /* last modified footer */
-    document.getElementById('last-modified').textContent
-      = new Date(document.lastModified).toLocaleDateString();
   </script>
 </body>
-</html> 
+</html>
